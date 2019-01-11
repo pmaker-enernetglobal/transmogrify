@@ -1,0 +1,40 @@
+README - a minimalist macroprocessor.
+
+transmogrify - is a minimalist macro processor that transmogrifies its inputs (transforms as if by magic).
+
+This is based on a minimalist TCL macro based on the idea of generating code that is then exec'ed to
+do the actual generation. The syntax is minimalist, every line starting with % is python3 code, every
+else is expand using $var and ${var} notation so:
+
+%for n in range(10):
+  So $n is ${n}
+  But this is just a line
+  %if n > 5:
+    N is big
+
+Becomes:
+
+  So 0 is 0
+  But this is just a line
+  So 1 is 1
+  But this is just a line
+  So 2 is 2
+  But this is just a line
+  So 3 is 3
+  But this is just a line
+  So 4 is 4
+  But this is just a line
+  So 5 is 5
+  But this is just a line
+  So 6 is 6
+  But this is just a line
+    N is big
+  So 7 is 7
+  But this is just a line
+    N is big
+  So 8 is 8
+  But this is just a line
+    N is big
+  So 9 is 9
+  But this is just a line
+    N is big
